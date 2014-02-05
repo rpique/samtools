@@ -5,7 +5,7 @@
 CC       = gcc
 CPPFLAGS = $(DFLAGS) $(INCLUDES)
 CFLAGS   = -g -Wall -O2
-LDFLAGS  =
+LDFLAGS  = -L$(prefix)/lib
 DFLAGS=		-D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_CURSES_LIB=1
 LOBJS=		bam_aux.o bam.o bam_import.o sam.o \
 			sam_header.o
@@ -16,10 +16,10 @@ AOBJS=		bam_index.o bam_plcmd.o sam_view.o \
 			cut_target.o phase.o bam2depth.o padding.o bedcov.o bamshuf.o \
             faidx.o stats.o bam_flags.o
             # tview todo: bam_tview.o bam_tview_curses.o bam_tview_html.o bam_lpileup.o
-INCLUDES=	-I. -I$(HTSDIR)
+INCLUDES=	-I. -I$(HTSDIR) -I$(prefix)/include
 LIBCURSES=	-lcurses # -lXCurses
 
-prefix      = /usr/local
+prefix      = /wsu/home/groups/piquelab
 exec_prefix = $(prefix)
 bindir      = $(exec_prefix)/bin
 mandir      = $(prefix)/share/man
